@@ -2,11 +2,15 @@
 package com.vextron.farmbot
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.graphics.Color
 import android.view.Gravity
-import android.widget.*
-import android.graphics.Typeface
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 
 class MainActivity : Activity() {
 
@@ -28,7 +32,6 @@ class MainActivity : Activity() {
             textSize = 32f
             gravity = Gravity.CENTER
             setTextColor(Color.RED)
-            typeface = Typeface.DEFAULT_BOLD
         }
 
         status = TextView(this).apply {
@@ -42,8 +45,17 @@ class MainActivity : Activity() {
         root.addView(status)
 
         addButton(root, "▶ ЗАПУСТИТЬ") {
-            running = true
-            status.text = "СТАТУС: ЗАПУЩЕН"
+            if (!Settings.canDrawOverlays(this)) {
+                val intent = Intent(
+                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:$packageName")
+                )
+                startActivity(intent)
+            } else {
+                startService(Intent(this, FloatingService::class.java))
+                running = true
+                status.text = "СТАТУС: ЗАПУЩЕН"
+            }
         }
 
         addButton(root, "Ⅱ ПАУЗА") {
@@ -53,6 +65,7 @@ class MainActivity : Activity() {
 
         addButton(root, "■ ОСТАНОВИТЬ") {
             running = false
+            stopService(Intent(this, FloatingService::class.java))
             status.text = "СТАТУС: ОСТАНОВЛЕН"
         }
 
@@ -83,3 +96,4 @@ class MainActivity : Activity() {
         )
     }
 }
+
