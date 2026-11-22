@@ -1,0 +1,81 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101820">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="VEXTRON FARM BOT"
+        android:textColor="#00E5FF"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="● БОТ ОСТАНОВЛЕН"
+        android:textColor="#FF5252"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintTop_toBottomOf="@id/status"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ВЫБЕРИ РЕСУРСЫ"
+                android:textColor="#00E5FF"
+                android:textSize="18sp"/>
+
+            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Сера" android:textColor="#FFFFFF"/>
+            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Металлическая руда" android:textColor="#FFFFFF"/>
+            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Компоненты" android:textColor="#FFFFFF"/>
+            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Камень" android:textColor="#FFFFFF"/>
+            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Дерево" android:textColor="#FFFFFF"/>
+            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Скрап" android:textColor="#FFFFFF"/>
+            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ящики и лут" android:textColor="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:text="ЗАПУСТИТЬ"/>
+
+            <Button
+                android:id="@+id/stopButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:text="ОСТАНОВИТЬ"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
